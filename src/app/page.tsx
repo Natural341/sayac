@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 // Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçer.
 // Aynı gün için hep aynı fotoğrafı gösterir (date'e göre seed kullanır)
-function getRandomPhotoName(date: Date) {
+function getRandomPhotoName(date: Date, photoFormat: string = 'jpeg'): string {
   // Tarihi seed olarak kullan (aynı gün = aynı fotoğraf)
   const dateString = date.toDateString();
   let hash = 0;
@@ -16,10 +16,10 @@ function getRandomPhotoName(date: Date) {
   }
   
   // Fotoğraf sayısı - 9 tane fotoğraf var
-  const photoCount = 9; // love_1.png'den love_9.png'ye kadar
+  const photoCount = 9;
   
   const photoIndex = Math.abs(hash % photoCount) + 1;
-  return `/love-photos/love_${photoIndex}.jpeg`;
+  return `/love-photos/love_${photoIndex}.${photoFormat}`;
 }
 
 type DailyPhotoProps = {

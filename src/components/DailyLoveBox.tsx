@@ -1,11 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { getDailyLoveMessage, getThemeColors } from '@/utils/dailyLoveMessages';
+import { getDailyLoveMessage, getThemeColors, LoveMessage } from '@/utils/dailyLoveMessages';
 
 export default function DailyLoveBox() {
-  const [todayMessage, setTodayMessage] = useState<any>(null);
+  const [todayMessage, setTodayMessage] = useState<LoveMessage | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
