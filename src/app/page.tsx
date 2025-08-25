@@ -85,9 +85,9 @@ function DailyPhoto({ date }: DailyPhotoProps) {
                 className="rounded-xl object-contain max-w-[85vw] max-h-[65vh] 
                           transition-all duration-700 hover:scale-105"
                 onError={(e) => {
-                  const img = e.target as HTMLImageElement;
-                  img.src = "https://placehold.co/600x600/ec4899/FFFFFF?text=Fotoğraf+Yok";
-                  img.alt = "Fotoğraf Bulunamadı";
+                  const Image = e.target as HTMLImageElement;
+                  Image.src = "https://placehold.co/600x600/ec4899/FFFFFF?text=Fotoğraf+Yok";
+                  Image.alt = "Fotoğraf Bulunamadı";
                 }}
               />
               
