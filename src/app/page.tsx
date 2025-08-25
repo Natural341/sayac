@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 // Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçer.
 // Aynı gün için hep aynı fotoğrafı gösterir (date'e göre seed kullanır)
@@ -79,15 +80,17 @@ function DailyPhoto({ date }: DailyPhotoProps) {
 
             {/* Photo Container */}
             <div className="relative overflow-hidden rounded-2xl border-4 border-gradient-to-br from-pink-300/50 to-rose-300/50 shadow-2xl">
-              <img
+              <Image
                 src={photoSrc}
                 alt="Bugünün Fotoğrafı"
+                width={800}
+                height={600}
                 className="rounded-xl object-contain max-w-[85vw] max-h-[65vh] 
                           transition-all duration-700 hover:scale-105"
-                onError={(e) => {
-                  const Image = e.target as HTMLImageElement;
-                  Image.src = "https://placehold.co/600x600/ec4899/FFFFFF?text=Fotoğraf+Yok";
-                  Image.alt = "Fotoğraf Bulunamadı";
+                onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                  const img = e.target as HTMLImageElement;
+                  img.src = "https://placehold.co/600x600/ec4899/FFFFFF?text=Fotoğraf+Yok";
+                  img.alt = "Fotoğraf Bulunamadı";
                 }}
               />
               
