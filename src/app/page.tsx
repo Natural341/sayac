@@ -115,20 +115,7 @@ function DailyPhoto({ date }: DailyPhotoProps) {
 }
 
 // Üstteki "Bugünün Sevgi Kutusu" yazısını içeren bileşen.
-function DailyLoveBox() {
-  return (
-    <div className="bg-gradient-to-r from-rose-700/25 via-pink-800/25 to-rose-700/25 
-                    backdrop-blur-lg rounded-full px-8 py-4 
-                    border border-rose-400/40 shadow-2xl relative
-                    hover:shadow-rose-500/25 transition-all duration-500">
-      <span className="text-white font-medium text-xl flex items-center gap-4">
-        <span className="text-2xl text-rose-300 animate-gentle-pulse">♥</span>
-        Bugünün Sevgi Kutusu
-        <span className="text-2xl text-rose-300 animate-gentle-pulse delay-500">♥</span>
-      </span>
-    </div>
-  );
-}
+
 
 // Düzgün yıldız simgesi için SVG bileşeni
 function PerfectStar({ size, className, style }: { size: number; className?: string; style?: React.CSSProperties }) {
@@ -209,7 +196,7 @@ export default function CountdownPage() {
     setStars(newStars);
 
     // Hedef tarihi burada ayarla: 16 Eylül 2025
-    const targetDate = new Date('2025-09-16T00:00:00').getTime();
+    const targetDate = new Date('2025-09-15T00:00:00').getTime();
     
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -353,26 +340,19 @@ export default function CountdownPage() {
         ))}
       </div>
       
+      
+
       {/* Ana İçerik */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8">
         
-        {/* Üst Sıra: Dönen Yıldız + Fotoğraf Butonu */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-8">
-          <div className="flex items-center gap-6">
-            <RotatingTimeStar size={70} />
-            <DailyLoveBox />
-          </div>
-          <DailyPhoto date={currentDate} />
-        </div>
-
-        {/* Başlık ve Alt Başlık */}
-        <div className="text-center mb-8 relative">
+        {/* En Üstte Başlık ve Alt Başlık */}
+        <div className="text-center mb-12 relative">
           <div className="flex items-center justify-center mb-6 relative">
             <span className="text-3xl text-pink-300 mr-4 animate-gentle-pulse">♥</span>
             
             <div className="relative">
-              <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-200 via-rose-300 to-pink-400 bg-clip-text text-transparent">
-                BİZİM ÖZEL GÜNÜMÜZ
+              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-200 via-rose-300 to-pink-400 bg-clip-text text-transparent">
+                BÜYÜK CONSTANTİNOPLE BULUŞMASI
               </h1>
               <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 flex space-x-4">
                 <PerfectStar size={16} className="text-yellow-300" style={{
@@ -394,8 +374,15 @@ export default function CountdownPage() {
           </h2>
         </div>
 
-        {/* Geri Sayım Kutucukları */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-10 relative w-full max-w-4xl">
+        {/* Geri Sayım Kutucukları - Ortasında Dönen Yıldız */}
+        <div className="relative mb-10 w-full max-w-4xl">
+          {/* Dönen Yıldız - Tam Ortada */}
+          <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+            <RotatingTimeStar size={90} />
+          </div>
+          
+          {/* Geri Sayım Kutucukları */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 relative">
           {[
             { value: timeLeft.days, label: 'GÜN', symbol: '♥' },
             { value: timeLeft.hours, label: 'SAAT', symbol: '♡' },
@@ -435,6 +422,12 @@ export default function CountdownPage() {
               </div>
             </div>
           ))}
+          </div>
+        </div>
+
+        {/* Fotoğraf Butonu */}
+        <div className="mb-8">
+          <DailyPhoto date={currentDate} />
         </div>
 
         {/* Etkinlik Tarihi ve Mesaj */}
@@ -446,25 +439,16 @@ export default function CountdownPage() {
                           hover:shadow-pink-500/30 transition-all duration-500">
             <h3 className="text-xl md:text-2xl font-bold text-white mb-2 flex items-center gap-3">
               <span className="animate-gentle-pulse text-pink-300">♥</span>
-              16 Eylül 2025
+              15 Eylül 2025
               <span className="animate-gentle-pulse delay-1000 text-pink-300">♥</span>
             </h3>
             <p className="text-white/90 text-base text-center">
-              Kalplerimiz tek attığında...
+              4. SEZON BAŞLASINNN! 🎉
             </p>
           </div>
 
           {/* Seni Seviyorum Mesajı */}
-          <div className="bg-gradient-to-r from-rose-500/30 to-pink-500/30 
-                          backdrop-blur-lg rounded-full px-8 py-5 
-                          border border-pink-300/40 shadow-2xl relative
-                          hover:shadow-pink-500/40 transition-all duration-500">
-            <span className="text-white font-semibold text-xl flex items-center gap-4">
-              <span className="animate-gentle-pulse text-pink-300 text-2xl">♥</span>
-              Seni Seviyorum
-              <span className="animate-gentle-pulse delay-1000 text-pink-300 text-2xl">♥</span>
-            </span>
-          </div>
+          
         </div>
 
         {/* Alt Bilgi */}
@@ -473,7 +457,7 @@ export default function CountdownPage() {
             <PerfectStar size={14} className="text-pink-300" style={{
               animation: 'spin-clockwise 3s linear infinite'
             }} />
-            <span>Her saniye seninle daha güzel...</span>
+            <span>Her saniye seninle daha güzel... ⭐</span>
             <PerfectStar size={14} className="text-pink-300" style={{
               animation: 'spin-clockwise 3s linear infinite',
               animationDelay: '1s'

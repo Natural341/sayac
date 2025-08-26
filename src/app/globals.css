@@ -24,3 +24,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Next.js dev tools ve logoları gizle */
+#__next-build-watcher,
+[data-nextjs-scroll-focus-boundary],
+.__next-dev-overlay,
+#__next-prerender-indicator,
+svg[data-testid*="next"],
+div[data-nextjs*="true"],
+.nextjs-portal,
+.__nextjs__ {
+  display: none !important;
+}
