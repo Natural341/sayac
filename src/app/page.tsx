@@ -7,9 +7,14 @@ import Image from 'next/image';
 // Aynı gün için hep aynı fotoğrafı gösterir (date'e göre seed kullanır)
 // Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçeer.
 // Aynı gün için hep aynı fotoğrafı gösterir (date'e göre seed kullanır)
+// Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçer.
+// Her 6 saatte bir farklı fotoğraf gösterir (6 saatlik periyotlara göre seed kullanır)
 function getRandomPhotoName(date: Date, photoFormat: string = 'jpeg'): string {
-  // Tarihi daha detaylı bir string'e çevir
-  const dateString = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+  // 6 saatlik periyot hesapla (0-3: 0, 4-9: 1, 10-15: 2, 16-23: 3)
+  const sixHourPeriod = Math.floor(date.getHours() / 6);
+  
+  // Tarihi ve 6 saatlik periyodu birleştir
+  const dateString = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-period-${sixHourPeriod}`;
   
   // Daha iyi bir hash algoritması kullan
   let hash = 0;
@@ -27,12 +32,12 @@ function getRandomPhotoName(date: Date, photoFormat: string = 'jpeg'): string {
   hash = hash ^ (hash >>> 13);
   
   // Fotoğraf sayısı - 9 tane fotoğraf var
-  const photoCount = 33;
+  const photoCount = 9;
   
   // Math.abs kullanarak negatif değerleri pozitife çevir ve modulo al
   const photoIndex = Math.abs(hash % photoCount) + 1;
   
-  console.log(`Date: ${dateString}, Hash: ${hash}, Photo Index: ${photoIndex}`); // Debug için
+  console.log(`Date: ${dateString}, Period: ${sixHourPeriod}, Hash: ${hash}, Photo Index: ${photoIndex}`); // Debug için
   
   return `/love-photos/love_${photoIndex}.${photoFormat}`;
 }
