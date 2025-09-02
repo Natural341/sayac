@@ -3,10 +3,23 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-// Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçer.
-// Aynı gün için hep aynı fotoğrafı gösterir (date'e göre seed kullanır)
-// Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçeer.
-// Aynı gün için hep aynı fotoğrafı gösterir (date'e göre seed kullanır)
+// Type tanımları
+type DailyPhotoProps = {
+  date: Date;
+};
+
+type Star = {
+  key: string;
+  left: string;
+  top: string;
+  fontSize: string;
+  color: string;
+  animationDelay: string;
+  animationDuration: string;
+  symbol: string;
+  moveDistance: string;
+};
+
 // Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçer.
 // Her 6 saatte bir farklı fotoğraf gösterir (6 saatlik periyotlara göre seed kullanır)
 function getRandomPhotoName(date: Date, photoFormat: string = 'jpeg'): string {
@@ -130,9 +143,6 @@ function DailyPhoto({ date }: DailyPhotoProps) {
   );
 }
 
-// Üstteki "Bugünün Sevgi Kutusu" yazısını içeren bileşen.
-
-
 // Düzgün yıldız simgesi için SVG bileşeni
 function PerfectStar({ size, className, style }: { size: number; className?: string; style?: React.CSSProperties }) {
   return (
@@ -177,18 +187,6 @@ export default function CountdownPage() {
     seconds: 0
   });
   const [currentDate, setCurrentDate] = useState(new Date());
-  
-  type Star = {
-    key: string;
-    left: string;
-    top: string;
-    fontSize: string;
-    color: string;
-    animationDelay: string;
-    animationDuration: string;
-    symbol: string;
-    moveDistance: string;
-  };
   const [stars, setStars] = useState<Star[]>([]);
 
   // Component mount edildiğinde ve her saniye geri sayımı günceller.
@@ -462,9 +460,6 @@ export default function CountdownPage() {
               4. SEZON BAŞLASINNN! 🎉
             </p>
           </div>
-
-          {/* Seni Seviyorum Mesajı */}
-          
         </div>
 
         {/* Alt Bilgi */}
