@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 // Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçer.
 // Aynı gün için hep aynı fotoğrafı gösterir (date'e göre seed kullanır)
-// Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçer.
+// Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçeer.
 // Aynı gün için hep aynı fotoğrafı gösterir (date'e göre seed kullanır)
 function getRandomPhotoName(date: Date, photoFormat: string = 'jpeg'): string {
   // Tarihi daha detaylı bir string'e çevir
