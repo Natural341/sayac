@@ -27,7 +27,7 @@ function getRandomPhotoName(date: Date, photoFormat: string = 'jpeg'): string {
   hash = hash ^ (hash >>> 13);
   
   // Fotoğraf sayısı - 9 tane fotoğraf var
-  const photoCount = 9;
+  const photoCount = 33;
   
   // Math.abs kullanarak negatif değerleri pozitife çevir ve modulo al
   const photoIndex = Math.abs(hash % photoCount) + 1;
