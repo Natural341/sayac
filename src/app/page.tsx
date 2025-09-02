@@ -20,7 +20,7 @@ type Star = {
   moveDistance: string;
 };
 
-// Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçer.
+// Bu fonksiyon, tarihe göre rastgele bir fotoğraf seçeer.
 // Her 6 saatte bir farklı fotoğraf gösterir (6 saatlik periyotlara göre seed kullanır)
 function getRandomPhotoName(date: Date, photoFormat: string = 'jpeg'): string {
   // 6 saatlik periyot hesapla (0-3: 0, 4-9: 1, 10-15: 2, 16-23: 3)
